@@ -27,7 +27,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-20 bg-section-secondary">
+    <section id="about" className="py-16 md:py-20 bg-section-warm">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
@@ -42,7 +42,7 @@ export function About() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {highlights.map((highlight, index) => (
-              <div key={index} className="text-center group p-4 rounded-xl hover:bg-card transition-colors duration-300">
+              <div key={index} className="text-center group p-4 rounded-xl bg-white/50 dark:bg-card/50 hover:bg-white dark:hover:bg-card hover:shadow-md transition-all duration-300">
                 <div className="text-accent mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
                   {highlight.icon}
                 </div>

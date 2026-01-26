@@ -59,11 +59,11 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-br from-section-tertiary via-section-secondary to-background relative overflow-hidden">
+    <section id="contact" className="py-16 bg-section-soft relative overflow-hidden">
       {/* Subtle decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-64 h-64 bg-accent/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-primary/6 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

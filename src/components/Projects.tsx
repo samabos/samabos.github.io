@@ -70,11 +70,11 @@ export function Projects() {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-16 md:py-20 bg-section-secondary">
+    <section id="projects" className="py-16 md:py-20 bg-section-muted">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <Badge variant="secondary" className="mb-4 px-3 py-1">Featured Work</Badge>
+            <Badge variant="secondary" className="mb-4 px-3 py-1 bg-white dark:bg-card">Featured Work</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-5 tracking-tight text-foreground">
               Projects & Innovations
             </h2>

@@ -23,7 +23,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-section-tertiary border-t border-border/40">
+    <footer className="bg-section-muted border-t border-border/40">
       <div className="container mx-auto px-4 py-14">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
