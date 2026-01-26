@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -85,8 +85,8 @@ export function BlogPost() {
           codeBlockContent = [];
         } else {
           elements.push(
-            <pre key={index} className="bg-secondary rounded-lg p-4 overflow-x-auto my-4">
-              <code className={`language-${codeBlockLang} text-sm`}>
+            <pre key={index} className="bg-secondary/80 rounded-xl p-5 overflow-x-auto my-6 border border-border/50 shadow-sm">
+              <code className={`language-${codeBlockLang} text-sm font-mono leading-relaxed`}>
                 {codeBlockContent.join('\n')}
               </code>
             </pre>
@@ -102,10 +102,18 @@ export function BlogPost() {
         return;
       }
 
+      // Horizontal rule
+      if (line.trim() === '---') {
+        elements.push(
+          <hr key={index} className="my-8 border-t border-border/60" />
+        );
+        return;
+      }
+
       // Headers
       if (line.startsWith('## ')) {
         elements.push(
-          <h2 key={index} className="text-2xl font-bold mt-8 mb-4">
+          <h2 key={index} className="text-2xl font-bold mt-10 mb-4 tracking-tight">
             {line.slice(3)}
           </h2>
         );
@@ -114,7 +122,7 @@ export function BlogPost() {
 
       if (line.startsWith('### ')) {
         elements.push(
-          <h3 key={index} className="text-xl font-semibold mt-6 mb-3">
+          <h3 key={index} className="text-xl font-semibold mt-8 mb-3 tracking-tight">
             {line.slice(4)}
           </h3>
         );
@@ -124,7 +132,7 @@ export function BlogPost() {
       // List items
       if (line.startsWith('- ')) {
         elements.push(
-          <li key={index} className="ml-6 mb-2 list-disc">
+          <li key={index} className="ml-6 mb-2.5 list-disc text-foreground/90 leading-relaxed">
             {renderInlineMarkdown(line.slice(2))}
           </li>
         );
@@ -135,7 +143,7 @@ export function BlogPost() {
       const numberedMatch = line.match(/^(\d+)\. (.+)/);
       if (numberedMatch) {
         elements.push(
-          <li key={index} className="ml-6 mb-2 list-decimal">
+          <li key={index} className="ml-6 mb-2.5 list-decimal text-foreground/90 leading-relaxed">
             {renderInlineMarkdown(numberedMatch[2])}
           </li>
         );
@@ -149,7 +157,7 @@ export function BlogPost() {
 
       // Regular paragraph
       elements.push(
-        <p key={index} className="mb-4 leading-relaxed">
+        <p key={index} className="mb-5 leading-[1.8] text-foreground/90">
           {renderInlineMarkdown(line)}
         </p>
       );
@@ -158,49 +166,56 @@ export function BlogPost() {
     return elements;
   };
 
-  const renderInlineMarkdown = (text: string) => {
-    // Handle inline code
+  const renderInlineMarkdown = (text: string): React.ReactNode => {
+    // Handle inline code first
     const parts = text.split(/(`[^`]+`)/g);
     return parts.map((part, i) => {
       if (part.startsWith('`') && part.endsWith('`')) {
         return (
-          <code key={i} className="bg-secondary px-1.5 py-0.5 rounded text-sm">
+          <code key={i} className="bg-secondary px-1.5 py-0.5 rounded text-sm font-mono">
             {part.slice(1, -1)}
           </code>
         );
       }
-      // Handle bold
+      // Handle bold (**text**)
       const boldParts = part.split(/(\*\*[^*]+\*\*)/g);
       return boldParts.map((boldPart, j) => {
         if (boldPart.startsWith('**') && boldPart.endsWith('**')) {
-          return <strong key={`${i}-${j}`}>{boldPart.slice(2, -2)}</strong>;
+          return <strong key={`${i}-${j}`} className="font-semibold">{boldPart.slice(2, -2)}</strong>;
         }
-        // Handle links
-        const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-        const linkParts = [];
-        let lastIndex = 0;
-        let match;
-        while ((match = linkRegex.exec(boldPart)) !== null) {
-          if (match.index > lastIndex) {
-            linkParts.push(boldPart.slice(lastIndex, match.index));
+        // Handle italic (*text*) - single asterisks
+        const italicParts = boldPart.split(/(\*[^*]+\*)/g);
+        return italicParts.map((italicPart, k) => {
+          if (italicPart.startsWith('*') && italicPart.endsWith('*') && italicPart.length > 2) {
+            return <em key={`${i}-${j}-${k}`} className="italic text-muted-foreground">{italicPart.slice(1, -1)}</em>;
           }
-          linkParts.push(
-            <a
-              key={`${i}-${j}-${match.index}`}
-              href={match[2]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              {match[1]}
-            </a>
-          );
-          lastIndex = match.index + match[0].length;
-        }
-        if (lastIndex < boldPart.length) {
-          linkParts.push(boldPart.slice(lastIndex));
-        }
-        return linkParts.length > 0 ? linkParts : boldPart;
+          // Handle links
+          const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+          const linkParts: React.ReactNode[] = [];
+          let lastIndex = 0;
+          let match;
+          while ((match = linkRegex.exec(italicPart)) !== null) {
+            if (match.index > lastIndex) {
+              linkParts.push(italicPart.slice(lastIndex, match.index));
+            }
+            linkParts.push(
+              <a
+                key={`${i}-${j}-${k}-${match.index}`}
+                href={match[2]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline transition-colors"
+              >
+                {match[1]}
+              </a>
+            );
+            lastIndex = match.index + match[0].length;
+          }
+          if (lastIndex < italicPart.length) {
+            linkParts.push(italicPart.slice(lastIndex));
+          }
+          return linkParts.length > 0 ? linkParts : italicPart;
+        });
       });
     });
   };
@@ -270,7 +285,7 @@ export function BlogPost() {
             </div>
 
             {/* Article content */}
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none text-[1.05rem]">
               {renderContent(post.content)}
             </div>
 

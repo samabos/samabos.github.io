@@ -30,45 +30,45 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border z-50">
+    <header className="fixed top-0 left-0 right-0 bg-background/90 backdrop-blur-lg border-b border-border/50 z-50 transition-all duration-300">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground">SM</span>
+          <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-3 group">
+            <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300">
+              <span className="text-primary-foreground text-sm font-medium">SM</span>
             </div>
-            <span className="font-medium">Samson Maborukoje</span>
+            <span className="font-semibold tracking-tight">Samson Maborukoje</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('about')}
-              className="hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection('skills')}
-              className="hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
             >
               Skills
             </button>
             <button
               onClick={() => scrollToSection('projects')}
-              className="hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
             >
               Projects
             </button>
             <Link
               to="/blog"
-              className="hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
             >
               Blog
             </Link>
             <button
               onClick={() => scrollToSection('contact')}
-              className="hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
             >
               Contact
             </button>
@@ -87,36 +87,36 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border pt-4">
-            <div className="flex flex-col space-y-4">
+          <nav className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col space-y-3">
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-left hover:text-primary transition-colors"
+                className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-1"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('skills')}
-                className="text-left hover:text-primary transition-colors"
+                className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-1"
               >
                 Skills
               </button>
               <button
                 onClick={() => scrollToSection('projects')}
-                className="text-left hover:text-primary transition-colors"
+                className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-1"
               >
                 Projects
               </button>
               <Link
                 to="/blog"
-                className="text-left hover:text-primary transition-colors"
+                className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-left hover:text-primary transition-colors"
+                className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-1"
               >
                 Contact
               </button>
