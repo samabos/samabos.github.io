@@ -69,11 +69,11 @@ export function Skills() {
   );
 
   return (
-    <section id="skills" className="py-16 md:py-20 bg-background">
+    <section id="skills" className="py-16 md:py-20 bg-section-muted">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-foreground">
               Skills & Technologies
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
@@ -87,7 +87,7 @@ export function Skills() {
                 <Badge
                   key={index}
                   variant="secondary"
-                  className="px-3.5 py-1.5 text-sm hover:bg-secondary/80 transition-colors duration-200 cursor-default"
+                  className="px-3.5 py-1.5 text-sm bg-white dark:bg-card border border-border/50 hover:bg-secondary hover:border-border transition-all duration-200 cursor-default shadow-sm"
                 >
                   {skill}
                 </Badge>
@@ -101,7 +101,7 @@ export function Skills() {
                   <Badge
                     key={index}
                     variant="outline"
-                    className="px-3 py-1.5 text-xs border-border/60 hover:border-border transition-colors duration-200"
+                    className="px-3 py-1.5 text-xs bg-white/50 dark:bg-card/50 border-border/50 hover:border-accent hover:text-accent transition-all duration-200"
                   >
                     {cert}
                   </Badge>

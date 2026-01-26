@@ -27,11 +27,11 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-20 bg-secondary/10">
+    <section id="about" className="py-16 md:py-20 bg-section-warm">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-2xl md:text-3xl font-bold mb-5 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold mb-5 tracking-tight text-foreground">
               About Me
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -42,11 +42,11 @@ export function About() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {highlights.map((highlight, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-primary mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+              <div key={index} className="text-center group p-4 rounded-xl bg-white/50 dark:bg-card/50 hover:bg-white dark:hover:bg-card hover:shadow-md transition-all duration-300">
+                <div className="text-accent mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
                   {highlight.icon}
                 </div>
-                <h3 className="font-semibold mb-2 text-sm tracking-tight">{highlight.title}</h3>
+                <h3 className="font-semibold mb-2 text-sm tracking-tight text-foreground">{highlight.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{highlight.description}</p>
               </div>
             ))}
