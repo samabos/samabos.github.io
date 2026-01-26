@@ -18,7 +18,7 @@ export function Blog() {
   };
 
   return (
-    <section id="blog" className="py-16 bg-secondary/30">
+    <section id="blog" className="py-16 bg-slate-100 dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

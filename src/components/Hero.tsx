@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-secondary/5 via-background to-background">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-100 via-slate-50 to-background dark:from-slate-900 dark:via-slate-950 dark:to-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center space-y-10">
           <div className="space-y-5">

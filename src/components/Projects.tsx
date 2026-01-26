@@ -70,7 +70,7 @@ export function Projects() {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-16 md:py-20 bg-secondary/5">
+    <section id="projects" className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
