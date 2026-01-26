@@ -18,12 +18,12 @@ export function Blog() {
   };
 
   return (
-    <section id="blog" className="py-16 bg-slate-100 dark:bg-slate-900">
+    <section id="blog" className="py-16 bg-section-soft">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">Latest Articles</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <Badge variant="secondary" className="mb-4 bg-white dark:bg-card">Latest Articles</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
               Blog & Insights
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -34,15 +34,16 @@ export function Blog() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {recentPosts.map((post) => (
-              <Card key={post.slug} className="border-0 shadow-lg hover:shadow-xl transition-shadow group flex flex-col">
+              <Card key={post.slug} className="bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col overflow-hidden">
                 <div className="relative overflow-hidden">
                   <ImageWithFallback
                     src={post.image}
                     alt={post.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 left-4">
-                    <Badge variant="secondary">{post.tags[0]}</Badge>
+                    <Badge variant="secondary" className="backdrop-blur-sm bg-white/90 dark:bg-black/70 text-foreground">{post.tags[0]}</Badge>
                   </div>
                 </div>
                 <CardHeader className="pb-2">
@@ -56,7 +57,7 @@ export function Blog() {
                       <span>{post.readTime} min read</span>
                     </div>
                   </div>
-                  <CardTitle className="text-xl leading-tight group-hover:text-primary transition-colors">
+                  <CardTitle className="text-xl leading-tight group-hover:text-accent transition-colors">
                     <Link to={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
@@ -73,7 +74,7 @@ export function Blog() {
                       </Badge>
                     ))}
                   </div>
-                  <Button variant="ghost" className="w-fit p-0 h-auto text-primary hover:text-primary/80" asChild>
+                  <Button variant="ghost" className="w-fit p-0 h-auto text-accent hover:text-accent/80 font-medium" asChild>
                     <Link to={`/blog/${post.slug}`}>
                       Read more <ArrowRight size={16} className="ml-1" />
                     </Link>

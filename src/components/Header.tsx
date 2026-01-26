@@ -30,45 +30,45 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background/90 backdrop-blur-lg border-b border-border/50 z-50 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border/40 z-50 transition-all duration-300 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-3 group">
-            <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300">
-              <span className="text-primary-foreground text-sm font-medium">SM</span>
+            <div className="w-9 h-9 bg-accent rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105">
+              <span className="text-accent-foreground text-sm font-medium">SM</span>
             </div>
-            <span className="font-semibold tracking-tight">Samson Maborukoje</span>
+            <span className="font-semibold tracking-tight text-foreground">Samson Maborukoje</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             <button
               onClick={() => scrollToSection('about')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection('skills')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
             >
               Skills
             </button>
             <button
               onClick={() => scrollToSection('projects')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
             >
               Projects
             </button>
             <Link
               to="/blog"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
             >
               Blog
             </Link>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
             >
               Contact
             </button>

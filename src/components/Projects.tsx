@@ -70,12 +70,12 @@ export function Projects() {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-16 md:py-20 bg-background">
+    <section id="projects" className="py-16 md:py-20 bg-section-muted">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <Badge variant="secondary" className="mb-4 px-3 py-1">Featured Work</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-5 tracking-tight">
+            <Badge variant="secondary" className="mb-4 px-3 py-1 bg-white dark:bg-card">Featured Work</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-5 tracking-tight text-foreground">
               Projects & Innovations
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -87,17 +87,18 @@ export function Projects() {
           {/* Featured Projects */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {featuredProjects.map((project, index) => (
-              <Card key={index} className="border border-border/40 shadow-sm hover:shadow-lg transition-all duration-300 group bg-card/50 backdrop-blur-sm">
+              <Card key={index} className="bg-card border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
                 <div className="relative overflow-hidden">
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge variant="secondary">{project.type}</Badge>
+                    <Badge variant="secondary" className="backdrop-blur-sm bg-white/90 dark:bg-black/70 text-foreground">{project.type}</Badge>
                     {project.inProgress && (
-                      <Badge variant="outline" className="bg-orange-100 text-orange-700 border-orange-200">
+                      <Badge variant="outline" className="backdrop-blur-sm bg-orange-100/90 text-orange-700 border-orange-200 dark:bg-orange-900/70 dark:text-orange-300">
                         In Progress
                       </Badge>
                     )}
@@ -167,27 +168,28 @@ export function Projects() {
 
           {/* Other Projects Grid */}
           <div>
-            <h3 className="text-2xl font-semibold mb-8 text-center tracking-tight">More Projects</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-center tracking-tight text-foreground">More Projects</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.map((project, index) => (
-                <Card key={index} className="border border-border/40 shadow-sm hover:shadow-md transition-all duration-300 group bg-card/50">
+                <Card key={index} className="bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden">
                   <div className="relative overflow-hidden">
                     <ImageWithFallback
                       src={project.image}
                       alt={project.title}
                       className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-2 left-2 flex gap-1">
-                      <Badge variant="secondary" className="text-xs">{project.type}</Badge>
+                      <Badge variant="secondary" className="text-xs backdrop-blur-sm bg-white/90 dark:bg-black/70 text-foreground">{project.type}</Badge>
                       {project.inProgress && (
-                        <Badge variant="outline" className="text-xs bg-orange-100 text-orange-700 border-orange-200">
+                        <Badge variant="outline" className="text-xs backdrop-blur-sm bg-orange-100/90 text-orange-700 border-orange-200 dark:bg-orange-900/70 dark:text-orange-300">
                           In Progress
                         </Badge>
                       )}
                     </div>
                   </div>
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">{project.title}</CardTitle>
+                    <CardTitle className="text-lg text-foreground">{project.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
