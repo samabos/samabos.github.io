@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Samson Maborukoje - Blog</title>
+    <link>https://samabos.github.io/blog</link>
+    <description>Thoughts on software development, artificial intelligence, and building products that solve real-world problems.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jan 2025 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://samabos.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Building AI-Powered Project Management Tools</title>
+      <link>https://samabos.github.io/blog/building-ai-powered-project-management</link>
+      <guid isPermaLink="true">https://samabos.github.io/blog/building-ai-powered-project-management</guid>
+      <description>Learn how I built AIPM, a tool that transforms ideas into structured projects with AI-generated artifacts and intelligent project initialization.</description>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+      <category>AI</category>
+    </item>
+
+    <item>
+      <title>Multilabel Text Classification with DistilBERT for Trade Compliance</title>
+      <link>https://samabos.github.io/blog/multilabel-text-classification-with-distilbert</link>
+      <guid isPermaLink="true">https://samabos.github.io/blog/multilabel-text-classification-with-distilbert</guid>
+      <description>How I built HS.Codes - a commodity classification system using retrained DistilBERT for WCO Commodity Codes and Tariffs Classification.</description>
+      <pubDate>Wed, 08 Jan 2025 00:00:00 GMT</pubDate>
+      <category>Machine Learning</category>
+    </item>
+
+    <item>
+      <title>Building Intelligent Risk Assessment Systems for Customs Operations</title>
+      <link>https://samabos.github.io/blog/risk-assessment-systems-in-customs</link>
+      <guid isPermaLink="true">https://samabos.github.io/blog/risk-assessment-systems-in-customs</guid>
+      <description>An inside look at STRIX - Strategic Trade Risk Intelligence eXchange, and how AI is revolutionizing customs workflow management.</description>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 GMT</pubDate>
+      <category>AI</category>
+    </item>
+  </channel>
+</rss>
