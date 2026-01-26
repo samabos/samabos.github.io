@@ -70,16 +70,16 @@ export function Projects() {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-16 bg-background">
+    <section id="projects" className="py-16 md:py-20 bg-secondary/5">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">Featured Work</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <div className="text-center mb-14">
+            <Badge variant="secondary" className="mb-4 px-3 py-1">Featured Work</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-5 tracking-tight">
               Projects & Innovations
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A selection of recent projects showcasing my expertise in web development 
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              A selection of recent projects showcasing my expertise in web development
               and artificial intelligence applications.
             </p>
           </div>
@@ -87,7 +87,7 @@ export function Projects() {
           {/* Featured Projects */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {featuredProjects.map((project, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow group">
+              <Card key={index} className="border border-border/40 shadow-sm hover:shadow-lg transition-all duration-300 group bg-card/50 backdrop-blur-sm">
                 <div className="relative overflow-hidden">
                   <ImageWithFallback
                     src={project.image}
@@ -167,10 +167,10 @@ export function Projects() {
 
           {/* Other Projects Grid */}
           <div>
-            <h3 className="text-2xl font-semibold mb-8 text-center">More Projects</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-center tracking-tight">More Projects</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.map((project, index) => (
-                <Card key={index} className="border-0 shadow-sm hover:shadow-md transition-shadow group">
+                <Card key={index} className="border border-border/40 shadow-sm hover:shadow-md transition-all duration-300 group bg-card/50">
                   <div className="relative overflow-hidden">
                     <ImageWithFallback
                       src={project.image}

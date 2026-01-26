@@ -27,27 +27,27 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-12 bg-secondary/20">
+    <section id="about" className="py-16 md:py-20 bg-secondary/10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <div className="text-center mb-14">
+            <h2 className="text-2xl md:text-3xl font-bold mb-5 tracking-tight">
               About Me
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Lead Software Engineer with 9+ years of experience building enterprise-scale applications 
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Lead Software Engineer with 9+ years of experience building enterprise-scale applications
               and AI-powered systems for customs, logistics, and trade operations.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {highlights.map((highlight, index) => (
-              <div key={index} className="text-center">
-                <div className="text-primary mb-3 flex justify-center">
+              <div key={index} className="text-center group">
+                <div className="text-primary mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
                   {highlight.icon}
                 </div>
-                <h3 className="font-medium mb-2">{highlight.title}</h3>
-                <p className="text-sm text-muted-foreground">{highlight.description}</p>
+                <h3 className="font-semibold mb-2 text-sm tracking-tight">{highlight.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{highlight.description}</p>
               </div>
             ))}
           </div>
