@@ -5,22 +5,30 @@ import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Calendar, Clock, ArrowRight, Rss } from "lucide-react";
-import { blogPosts } from "../data/blogPosts";
+import { blogPosts, BLOG_CATEGORIES } from "../data/blogPosts";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
 export function BlogList() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Get all unique tags
-  const allTags = Array.from(
-    new Set(blogPosts.flatMap(post => post.tags))
-  ).sort();
+  // Get all unique tags from filtered posts
+  const getTagsForCategory = (category: string | null) => {
+    const posts = category
+      ? blogPosts.filter(post => post.category === category)
+      : blogPosts;
+    return Array.from(new Set(posts.flatMap(post => post.tags))).sort();
+  };
 
-  // Filter posts by selected tag
-  const filteredPosts = selectedTag
-    ? blogPosts.filter(post => post.tags.includes(selectedTag))
-    : blogPosts;
+  const allTags = getTagsForCategory(selectedCategory);
+
+  // Filter posts by selected category and tag
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = !selectedCategory || post.category === selectedCategory;
+    const matchesTag = !selectedTag || post.tags.includes(selectedTag);
+    return matchesCategory && matchesTag;
+  });
 
   // Sort by date (newest first)
   const sortedPosts = [...filteredPosts].sort(
@@ -59,8 +67,39 @@ export function BlogList() {
               </Button>
             </div>
 
+            {/* Category filter */}
+            <div className="mb-6">
+              <p className="text-sm text-muted-foreground text-center mb-3">Categories</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                <Button
+                  variant={selectedCategory === null ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => {
+                    setSelectedCategory(null);
+                    setSelectedTag(null);
+                  }}
+                >
+                  All
+                </Button>
+                {BLOG_CATEGORIES.map(category => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setSelectedTag(null);
+                    }}
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
             {/* Tags filter */}
             <div className="mb-8">
+              <p className="text-sm text-muted-foreground text-center mb-3">Tags</p>
               <div className="flex flex-wrap gap-2 justify-center">
                 <Button
                   variant={selectedTag === null ? "default" : "outline"}
@@ -93,7 +132,7 @@ export function BlogList() {
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge variant="secondary">{post.tags[0]}</Badge>
+                      <Badge variant="secondary">{post.category}</Badge>
                     </div>
                   </div>
                   <CardHeader className="pb-2">
@@ -137,14 +176,17 @@ export function BlogList() {
             {sortedPosts.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-muted-foreground">
-                  No posts found with the selected tag.
+                  No posts found with the selected filters.
                 </p>
                 <Button
                   variant="link"
-                  onClick={() => setSelectedTag(null)}
+                  onClick={() => {
+                    setSelectedCategory(null);
+                    setSelectedTag(null);
+                  }}
                   className="mt-2"
                 >
-                  Clear filter
+                  Clear filters
                 </Button>
               </div>
             )}

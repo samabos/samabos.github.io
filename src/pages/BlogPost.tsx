@@ -220,6 +220,7 @@ export function BlogPost() {
             {/* Article header */}
             <header className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
+                <Badge variant="default">{post.category}</Badge>
                 {post.tags.map((tag, index) => (
                   <Badge key={index} variant="secondary">
                     {tag}
