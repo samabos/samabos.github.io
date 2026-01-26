@@ -1,76 +1,64 @@
-﻿
-- 👋 Hi, I’m @samabos or simply Mabos
-- 👀 I’m interested in Software Engineering 
-- 📫 How to reach me samaborukoje@gmail.com
+# samabos.github.io
 
-# Getting Started with Create React App
+Personal portfolio website for Samuel Aborukoje (@samabos).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+This is my personal portfolio site showcasing my work as a Software Engineer. The site includes a blog section with RSS feed support for content syndication.
 
-In the project directory, you can run:
+**Live site:** [https://samabos.github.io](https://samabos.github.io)
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling
+- **Radix UI** - Accessible component primitives
+- **React Router** - Client-side routing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v18 or higher recommended)
+- npm
 
-### `npm run build`
-### `npm run deploy` and if not working check origin url is configured and run `npm clean install` 
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Development
 
-## Portfolio HTML Template Reference
+```bash
+npm run dev
+```
 
-<p>Forty by HTML5 UP
-html5up.net | @ajlkn<br/>
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)</p>
+Opens the app in development mode at [http://localhost:5173](http://localhost:5173).
 
+### Build
 
-<p>This is Forty, my latest and greatest addition to HTML5 UP and, per its incredibly
-creative name, my 40th (woohoo)! It's built around a grid of "image tiles" that are
-set up to smoothly transition to secondary landing pages (for which a separate page
-template is provided), and includes a number of neat effects (check out the menu!),
-extra features, and all the usual stuff you'd expect. Hope you dig it!</p>
+```bash
+npm run build
+```
 
-<p>Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.</p>
+Builds the app for production to the `dist` folder.
 
-(* = not included)
+### Deploy
 
-AJ
-aj@lkn.io | @ajlkn
+```bash
+npm run deploy
+```
 
+Deploys to GitHub Pages. If deployment fails, ensure the origin URL is configured correctly and run `npm clean-install` first.
 
-Credits:
+## Contact
 
-	Demo Images:
-		Unsplash (unsplash.com)
+- Email: samaborukoje@gmail.com
+- GitHub: [@samabos](https://github.com/samabos)
 
-	Icons:
-		Font Awesome (fontawesome.io)
+## Credits
 
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Portfolio design inspired by Forty template by HTML5 UP (html5up.net | @ajlkn), licensed under CCA 3.0.
