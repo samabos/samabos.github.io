@@ -1,10 +1,25 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, Rss } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    if (isHomePage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/#${sectionId}`);
+    }
   };
 
   return (
@@ -13,14 +28,14 @@ export function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                   <span className="text-primary-foreground">SM</span>
                 </div>
                 <span className="font-semibold">Samson Maborukoje</span>
-              </div>
+              </Link>
               <p className="text-muted-foreground">
-                Full Stack Developer & AI Enthusiast creating innovative solutions 
+                Full Stack Developer & AI Enthusiast creating innovative solutions
                 that make a difference.
               </p>
             </div>
@@ -28,26 +43,32 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="font-semibold">Quick Links</h3>
               <div className="space-y-2">
-                <button 
-                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() => scrollToSection('about')}
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   About
                 </button>
-                <button 
-                  onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() => scrollToSection('skills')}
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Skills
                 </button>
-                <button 
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() => scrollToSection('projects')}
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Projects
                 </button>
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                <Link
+                  to="/blog"
+                  className="block text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Blog
+                </Link>
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contact
@@ -58,8 +79,8 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="font-semibold">Connect</h3>
               <div className="flex space-x-4">
-                <a 
-                  href="https://github.com/samabos" 
+                <a
+                  href="https://github.com/samabos"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -67,8 +88,8 @@ export function Footer() {
                 >
                   <Github size={20} />
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/samabos" 
+                <a
+                  href="https://www.linkedin.com/in/samabos"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -76,15 +97,24 @@ export function Footer() {
                 >
                   <Linkedin size={20} />
                 </a>
-                <a 
-                  href="mailto:mabos.samson@gmail.com" 
+                <a
+                  href="mailto:mabos.samson@gmail.com"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   aria-label="Email"
                 >
                   <Mail size={20} />
                 </a>
+                <a
+                  href="/rss.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  aria-label="RSS Feed"
+                >
+                  <Rss size={20} />
+                </a>
               </div>
-              <button 
+              <button
                 onClick={scrollToTop}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
